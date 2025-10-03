@@ -7,8 +7,10 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(100), index=True)
+    name = Column(String(100), unique=True, index=True, nullable=False)
+    email = Column(String(120), unique=True, index=True, nullable=False)  # ✅ New field
     role = Column(String(50), default='User')
+    password = Column(String(200), nullable=False)  # ✅ Increased length for hashed password
 
     # Relationship to posts
     posts = relationship("Post", back_populates="owner")

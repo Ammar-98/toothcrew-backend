@@ -36,6 +36,8 @@ class PostModal(BaseModel):
 class UserModal(BaseModel):
     name: str
     role: str
+    email: str 
+    password: str
 
 
 # ---------------- Routes ----------------
@@ -43,6 +45,12 @@ class UserModal(BaseModel):
 def read_root():
     return {"Hello": "World"}
 
+
+# ✅ GET API: Fetch all users
+@app.get("/users")
+def get_users(db: Session = Depends(get_db)):
+    users = db.query(models.User).all()
+    return users
 
 # ✅ Create User
 @app.post("/user", status_code=status.HTTP_201_CREATED)

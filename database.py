@@ -2,8 +2,7 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 # MySQL connection
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://sql12800299:3Evh96aIyT@sql12.freesqldatabase.com:3306/sql12800299"
-
+SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
